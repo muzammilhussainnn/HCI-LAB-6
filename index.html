@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Week 08: LERP Lab</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; }
+        .container { max-width: 400px; border: 1px solid #ccc; padding: 20px; border-radius: 8px; }
+        .result-box { margin-top: 20px; padding: 10px; background: #e7f3ff; border: 2px solid #007bff; border-radius: 5px; }
+        input[type="number"] { width: 60px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>LERP Calculator</h2>
+        
+        <label>Start (A): </label>
+        <input type="number" id="valA" value="0"> <br>
+        
+        <label>End (B): </label>
+        <input type="number" id="valB" value="100">
+        
+        <p>Adjust Weight (t):</p>
+        <input type="range" id="weightSlider" min="0" max="1" step="0.01" value="0.5" style="width: 100%;">
+
+        <div class="result-box">
+            <div><strong>Weight (t):</strong> <span id="tValue">0.5</span></div>
+            <div><strong>Result:</strong> <span id="calculatedLerp">50</span></div>
+        </div>
+    </div>
+
+    <script>
+        const inputA = document.getElementById('valA');
+        const inputB = document.getElementById('valB');
+        const slider = document.getElementById('weightSlider');
+        const displayT = document.getElementById('tValue');
+        const displayResult = document.getElementById('calculatedLerp');
+
+        function update() {
+            let a = parseFloat(inputA.value) || 0;
+            let b = parseFloat(inputB.value) || 0;
+            let t = parseFloat(slider.value);
+
+            // The LERP logic
+            let result = a + (b - a) * t;
+
+            displayT.textContent = t.toFixed(2);
+            displayResult.textContent = result.toFixed(2);
+        }
+
+        // Listen for changes on all inputs
+        slider.addEventListener('input', update);
+        inputA.addEventListener('input', update);
+        inputB.addEventListener('input', update);
+
+        update(); // Run once at start
+    </script>
+</body>
+</html>
