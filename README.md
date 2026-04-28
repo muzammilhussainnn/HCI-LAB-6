@@ -1,4 +1,4 @@
-# Lab 06: Linear Interpolation (LERP)
+# Linear Interpolation (LERP)
 ---
 
 ### Student Information
